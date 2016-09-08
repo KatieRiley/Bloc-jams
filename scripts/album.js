@@ -27,6 +27,21 @@ var albumMarconi = {
         {title: 'Wrong phone number', duration: '2:15'}
     ]
 };
+var albumBlink = {
+    title: 'California',
+    artist: 'Blink-182',
+    label: 'BMG Rights Management',
+    year: '2016',
+    albumArtUrl: 'assets/images/album_covers/03.png',
+    songs: [
+        {title: 'Cynical', duration: '1:55'},
+        {title: 'Bored to Death', duration: '3:55'},
+        {title: 'Shes out of her mind', duration: '2:42'},
+        {title: 'Los Angeles', duration: '3:03'},
+        {title: 'Sober', duration: '2:59'},
+        {title: 'Built this pool', duration: '0:16'},
+    ]
+}
 
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
@@ -62,4 +77,18 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    var albumImage = document.getElementsByClassName('album-cover-art')[0];
+    var albums = [albumMarconi, albumBlink, albumPicasso];
+    var i = 0;
+    
+    albumImage.addEventListener('click', function(event) {
+        //checks to see if index is out of bounds of the array, if so then
+        //the index is reset to 0
+        if (i === albums.length){
+            i = 0;
+        }
+        setCurrentAlbum(albums[i]);
+        i++;
+    })
+    
 };
