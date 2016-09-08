@@ -62,12 +62,23 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 var findParentByClassName = function(element, targetClass) {
     var currParent = element.parentElement;
+    
+    if (currParent === null) {
+        alert("No parent found")
+    }
     //while we havent found the target parent class and the current class name is not null
     while ((currParent.className != targetClass) && (currParent.className !== null)) {
         //if we are in the loop we need to keep going up the 'tree', so we set the currParent to 
         //the currParent's parent and we start all over again
         currParent = currParent.parentElement;
+        //if currParent === null then that means that we have failed to find a parent with the given
+        //class name
+        if (currParent === null) {
+            alert("No parent found with that class name")
+        }
     }
+
+    
     return currParent;
 };
 
